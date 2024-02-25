@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import image from "../assets/undraw_travel_booking_re_6umu.svg";
 import { useState } from "react";
+import axios from "axios";
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +15,10 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(registerData);
+    axios
+      .post("/register",registerData)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
   };
   return (
     <div className="flex flex-col-reverse lg:flex-row-reverse py-5">
