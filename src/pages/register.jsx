@@ -16,8 +16,13 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     axios
-      .post("/register",registerData)
-      .then((res) => console.log(res))
+      .post("/register", registerData)
+      .then((res) => {
+        if (res.status === 200) {
+          window.location = "/login";
+        }
+        console.log(res, res.status);
+      })
       .catch((err) => console.error(err));
   };
   return (
