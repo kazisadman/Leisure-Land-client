@@ -16,7 +16,11 @@ const Login = () => {
 
     axios
       .post("/login", loginData)
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.status === 200) {
+          window.location = "/";
+        }
+      })
       .catch((err) => console.log(err));
   };
   return (

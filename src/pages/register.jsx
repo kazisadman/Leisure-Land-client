@@ -19,7 +19,7 @@ const Register = () => {
       .post("/register", registerData)
       .then((res) => {
         if (res.status === 200) {
-          window.location = "/login";
+          window.location = "/";
         }
         console.log(res, res.status);
       })
