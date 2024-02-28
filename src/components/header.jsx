@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Logo from "./logo";
+import { useContext } from "react";
+import { ContextProvider } from "../provider/DataProvider";
 
 const Header = () => {
+  const {userName} = useContext(ContextProvider);
   return (
     <div>
       <header className="p-4 flex justify-between">
@@ -9,7 +12,7 @@ const Header = () => {
         <div className="flex items-center border-2 p-2 rounded-full gap-2 shadow-md shadow-gray-200">
           <div>Anywhere |</div>
           <div>Any week |</div>
-          <div>Add guest |</div>
+          <div>Add guest</div>
           <button className=" p-1 rounded-full bg-[#b67352] text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +48,7 @@ const Header = () => {
             </svg>
           </button>
           <Link
-            to="/login"
+            to={userName ? "/account" : "/login"}
             className=" p-2 rounded-full bg-gray-400 text-white"
           >
             <svg
@@ -61,6 +64,7 @@ const Header = () => {
               />
             </svg>
           </Link>
+          <h3>{userName}</h3>
         </div>
       </header>
     </div>

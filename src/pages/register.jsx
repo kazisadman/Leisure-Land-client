@@ -44,7 +44,6 @@ const Register = () => {
           </label>
           <input
             type="text"
-            value={name}
             onChange={(e) => setUserName(e.target.value)}
             className="px-2 py-1 border-2 border-gray-300"
             placeholder="your name"
