@@ -6,19 +6,29 @@ export const ContextProvider = createContext({});
 
 const DataProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const { email, userName } = userData;
+
   useEffect(() => {
     axios
       .get("/profile")
       .then((res) => {
         setUserData(res.data);
+        setLoading(false);
       })
       .catch((err) => console.error(err));
   }, []);
 
+  const data = {
+    email,
+    userName,
+    loading,
+    setUserData
+  };
+
   return (
-    <ContextProvider.Provider value={userData}>
-      {children}
-    </ContextProvider.Provider>
+    <ContextProvider.Provider value={data}>{children}</ContextProvider.Provider>
   );
 };
 

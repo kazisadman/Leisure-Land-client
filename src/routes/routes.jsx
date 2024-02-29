@@ -6,6 +6,7 @@ import Home from "../pages/home";
 import Account from "../pages/account";
 import Profile from "../pages/profile";
 import Bookings from "../pages/bookings";
+import Places from "../pages/places";
 
 export const router = createBrowserRouter([
   {
@@ -33,9 +34,13 @@ export const router = createBrowserRouter([
             element: <Profile></Profile>,
           },
           {
-            path:'bookings',
-            element:<Bookings></Bookings>
-          }
+            path: "bookings",
+            element: <Bookings></Bookings>,
+          },
+          {
+            path: "accommodation",
+            element: <Places></Places>,
+          },
         ],
       },
     ],

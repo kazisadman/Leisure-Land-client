@@ -2,23 +2,23 @@ import { useContext } from "react";
 import { ContextProvider } from "../provider/DataProvider";
 import axios from "axios";
 
-
 const Profile = () => {
-  const { userName, email } = useContext(ContextProvider);
+  const { userName, email, setUserData } = useContext(ContextProvider);
 
-    const handleLogout = () => {
-      axios
-        .get("/logout")
-        .then((res) => {
-          if (res.status === 200) {
-            window.location = "/login";
-          }
-        })
-        .catch((err) => console.error(err));
-    };
+  const handleLogout = () => {
+    axios
+      .get("/logout")
+      .then((res) => {
+        if (res.status === 200) {
+          setUserData(null);
+          window.location = "/login";
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <div>
         <h1>
           Logged in as {userName}({email})
